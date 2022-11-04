@@ -25,13 +25,6 @@ public class ToDoItem {
         setTaskDescription(taskDescription);
 
     }
-
-    public ToDoItem(String title, String taskDescription, Person creator){
-        this(title,taskDescription);
-
-
-
-    }
     //methods
 
 

@@ -21,8 +21,6 @@ public class ToDoItemTask {
     //methods
 
 
-
-
     //getters & setters
 
     public int getId() {
