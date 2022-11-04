@@ -19,7 +19,7 @@ public class App {
 
 
         System.out.println("_______________");
-        // System.out.println(takeARun.isOverdue()); // false ( one day late )
+        System.out.println(takeARun.isOverdue()); // false ( one day late )
 
     }//main
 }//class

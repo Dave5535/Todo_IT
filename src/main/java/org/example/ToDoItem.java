@@ -47,7 +47,7 @@ public class ToDoItem {
     public int getId() {
         return id;
     }
-    public String gettitle() {
+    public String getTitle() {
         return title;
     }
     public void setTitle(String item) {
@@ -73,7 +73,7 @@ public class ToDoItem {
         this.done = done;
     }
     public Person getCreator() {
-        return new Person(creator);
+        return creator;
     }
     public void setCreator(Person creator) {
         this.creator = creator;

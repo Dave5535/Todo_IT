@@ -10,7 +10,7 @@ public class Person {
 
 
     //constructors
-    public Person(Person creator) {
+    public Person(Person creator, Person assignee) {
         this.id = ++sequencer;
     }
 
@@ -24,16 +24,14 @@ public class Person {
 
 //methods
 
+
+
     public String getSummary() {
 
 
         return "id: " + id + ", Name: " + firstName + " " + lastName + ", email: " + email;
     }//personInformation
 
-
-public void setPerson(){
-
-}
 
 
 //assign
@@ -51,6 +49,7 @@ public void setPerson(){
     }
 
     public void setFirstName(String firstName) {
+        if (firstName == null) throw new IllegalArgumentException("firstName param was null");
         this.firstName = firstName;
     }
 
@@ -60,6 +59,7 @@ public void setPerson(){
     }
 
     public void setLastName(String lastName) {
+        if (lastName == null) throw new IllegalArgumentException("lastName param was null");
         this.lastName = lastName;
     }
 
