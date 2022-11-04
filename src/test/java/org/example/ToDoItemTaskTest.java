@@ -1,2 +1,4 @@
-package org.example;public class ToDoItemTaskTest {
+package org.example;
+
+public class ToDoItemTaskTest {
 }
