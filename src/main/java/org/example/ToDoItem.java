@@ -19,7 +19,7 @@ public class ToDoItem {
         this.id = ++sequencer;
         this.done = true;
     }
-    public ToDoItem(String title, String taskDescription) {
+    public ToDoItem(String title, String taskDescription,LocalDate deadline) {
         this();
         setTitle(title);
         setTaskDescription(taskDescription);
@@ -32,14 +32,14 @@ public class ToDoItem {
     public boolean isOverdue() {
         LocalDate tookTask = LocalDate.parse("2022-11-04");
 
-        LocalDate setDeadLine = LocalDate.parse("2022-11-11");
+
         LocalDate nowTime = LocalDate.now();
-        Period timeLeft = Period.between(nowTime, setDeadLine);
+        Period timeLeft = Period.between(nowTime, deadline);
         if (timeLeft.equals(0)) {
             System.out.println(timeLeft);
             return true;
         } else {
-            System.out.print(" Times up deadline was: " + setDeadLine + " Task completed:" + taskDescription +" ");
+            System.out.print(" Times up deadline was: " + deadline + " Task completed:" + taskDescription +" ");
         }
         return false;
     }//isOverdue

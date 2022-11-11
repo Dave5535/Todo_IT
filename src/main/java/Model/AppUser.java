@@ -25,7 +25,7 @@ public class AppUser {
 
     @Override
     public String toString() {
-        return "User name : "+ userName;
+        return "User name : "+ getUserName();
     }
 
 //setters & getters

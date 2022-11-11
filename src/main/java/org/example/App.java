@@ -4,11 +4,15 @@ package org.example;
 import Model.AppRole;
 import Model.AppUser;
 
+import java.time.LocalDate;
+
 public class App {
     public static void main(String[] args) {
 
         Person david = new Person("David", "Svantesson", "email@test"); // create an object in Person Class
-        ToDoItem takeARun = new ToDoItem(" Take a Run ", " Training"); // create an object in ToDoItem
+
+        LocalDate setDeadLine = LocalDate.parse("2022-11-11"); // when do you want to set deadline
+        ToDoItem takeARun = new ToDoItem(" Take a Run ", " Training",setDeadLine); // create an object in ToDoItem
         ToDoItemTask task = new ToDoItemTask(takeARun, david);  // create an object in ToDoItemTask of Person and ToDoItem
 
         AppUser user = new AppUser("Dave5535","123", AppRole.ROLE_APP_USER);
