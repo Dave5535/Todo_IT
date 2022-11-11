@@ -24,6 +24,7 @@ public class ToDoItem {
         setTitle(title);
         setTaskDescription(taskDescription);
 
+
     }
     //methods
 
@@ -38,7 +39,7 @@ public class ToDoItem {
             System.out.println(timeLeft);
             return true;
         } else {
-            System.out.println(" Times up deadline was: " + setDeadLine + " Task: " + taskDescription);
+            System.out.print(" Times up deadline was: " + setDeadLine + " Task completed:" + taskDescription +" ");
         }
         return false;
     }//isOverdue
@@ -64,6 +65,7 @@ public class ToDoItem {
         return deadline;
     }
     public void setDeadline(LocalDate deadline) {
+        if (deadline == null) throw new IllegalArgumentException("Deadline can't be null.");
         this.deadline = deadline;
     }
     public boolean done() {
@@ -76,7 +78,23 @@ public class ToDoItem {
         return creator;
     }
     public void setCreator(Person creator) {
+        if (creator == null) throw new IllegalArgumentException("Username can't be null.");
         this.creator = creator;
         this.done = false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return done;
+    }
+
+    @Override
+    public String toString() {
+        return "Mission id : " + id + " Mission : " + taskDescription + " Located in : "+ title + " Performed : " + done;
     }
 }//class

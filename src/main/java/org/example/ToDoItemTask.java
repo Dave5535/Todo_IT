@@ -45,4 +45,20 @@ public class ToDoItemTask {
         this.assignee = assignee;
         this.assigned = false;
     }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return assigned;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Task id : " + getId() + "  Task :" + getToDoItem() +" Assigned : "+ assigned;
+    }
 }// Class

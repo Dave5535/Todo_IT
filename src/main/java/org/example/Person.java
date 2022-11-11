@@ -1,5 +1,7 @@
 package org.example;
 
+import Model.AppUser;
+
 public class Person {
     private static int sequencer = 0;
     //fields
@@ -7,14 +9,15 @@ public class Person {
     private String firstName;
     private String lastName;
     private String email;
-
+    private AppUser credentials;
 
     //constructors
-    public Person(Person creator, Person assignee) {
-        this.id = ++sequencer;
+    public Person() {
+        this.id = (++sequencer);
     }
 
     public Person(String firstName, String lastName, String email) {
+        this();
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
@@ -24,23 +27,41 @@ public class Person {
 
 //methods
 
-
-
-    public String getSummary() {
-
-
+    @Override
+    public String toString() {
         return "id: " + id + ", Name: " + firstName + " " + lastName + ", email: " + email;
-    }//personInformation
+    }
 
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
 
 
 //assign
 
     //getters &setters
 
+    public AppUser getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(AppUser credentials) {
+        this.credentials = credentials;
+    }
+
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     //
@@ -69,6 +90,9 @@ public class Person {
     }
 
     public void setEmail(String email) {
+        if (email == null) throw new IllegalArgumentException("Email can't be null.");
         this.email = email;
     }
+
+
 }//class
