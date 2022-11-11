@@ -23,19 +23,17 @@ public class ToDoItem {
         this();
         setTitle(title);
         setTaskDescription(taskDescription);
-
+setDeadline(deadline);
 
     }
     //methods
 
 
     public boolean isOverdue() {
-        LocalDate tookTask = LocalDate.parse("2022-11-04");
-
 
         LocalDate nowTime = LocalDate.now();
         Period timeLeft = Period.between(nowTime, deadline);
-        if (timeLeft.equals(0)) {
+        if (nowTime.compareTo(deadline)<0) {
             System.out.println(timeLeft);
             return true;
         } else {

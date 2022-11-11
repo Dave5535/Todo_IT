@@ -11,7 +11,7 @@ public class App {
 
         Person david = new Person("David", "Svantesson", "email@test"); // create an object in Person Class
 
-        LocalDate setDeadLine = LocalDate.parse("2022-11-11"); // when do you want to set deadline
+        LocalDate setDeadLine = LocalDate.parse("2022-11-10"); // when do you want to set deadline
         ToDoItem takeARun = new ToDoItem(" Take a Run ", " Training",setDeadLine); // create an object in ToDoItem
         ToDoItemTask task = new ToDoItemTask(takeARun, david);  // create an object in ToDoItemTask of Person and ToDoItem
 
