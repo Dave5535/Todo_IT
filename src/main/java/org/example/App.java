@@ -1,52 +1,62 @@
 package org.example;
 
 
+import InterFace.*;
 import Model.AppRole;
 import Model.AppUser;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class App {
     public static void main(String[] args) {
+        AppUserDAO appUserDAO = new AppUserDAOCollection();
+        PersonDAO personDAO = new PersonDAOCollection();
+        TodoItemDAO todoItemDAO = new TodoItemDAOCollection();
+        TodoitemTaskDAO todoitemTaskDAO = new TodoItemTaskDAOCollection();
 
-        Person david = new Person("David", "Svantesson", "email@test"); // create an object in Person Class
+        AppUser user = new AppUser("Dave5535", "123");
+        AppUser test = new AppUser("test", "Admin");
 
-        LocalDate setDeadLine = LocalDate.parse("2022-11-10"); // when do you want to set deadline
-        ToDoItem takeARun = new ToDoItem(" Take a Run ", " Training",setDeadLine); // create an object in ToDoItem
-        ToDoItemTask task = new ToDoItemTask(takeARun, david);  // create an object in ToDoItemTask of Person and ToDoItem
+        appUserDAO.persist(user);
+        appUserDAO.persist(test);
 
-        AppUser user = new AppUser("Dave5535","123", AppRole.ROLE_APP_USER);
-        AppUser test = new AppUser("Test", "Admin",AppRole.ROLE_APP_ADMIN);
+        Person person1 = new Person("person1", "person1", "person.per@person1");
+        Person person2 = new Person("person2", "person2", "person.per@person2");
+        Person registerPerson1 = personDAO.persist(person1);
+        Person registerPerson2 = personDAO.persist(person2);
+
+        //System.out.println(personDAO.findAll());
+        // System.out.println(personDAO.findAll());
+        //  System.out.println(personDAO.findByEmail("person.per@person1"));
+        ToDoItem item1 = new ToDoItem("test1", "test1", LocalDate.parse("2022-11-15"));
+        ToDoItem item2 = new ToDoItem("test2", "test2", LocalDate.parse("2022-12-18"));
+
+        ToDoItem itemData1 = todoItemDAO.persist(item1);
+        ToDoItem itemData2 = todoItemDAO.persist(item2);
+
+        ToDoItemTask itemYouCanDO1 = new ToDoItemTask(itemData1, registerPerson1);
+        ToDoItemTask itemYouCanDO2 = new ToDoItemTask(itemData2, registerPerson2);
+
+        todoitemTaskDAO.persist(itemYouCanDO1);
+        todoitemTaskDAO.persist(itemYouCanDO2);
 
 
-        System.out.println(david.toString()); // return person info, don't print Role
-        // System.out.println(takeARun.getCreator().toString());
-       // System.out.println(task.getAssignee().toString());
+        System.out.println(todoitemTaskDAO.findById(1));
 
-        System.out.println(user.toString()); // return the username
-
-        System.out.println("_______________");
-        takeARun.setCreator(david);       // set a task to a person
-        task.setAssignee(david);
-
-        System.out.println("_______________");
-        System.out.println(takeARun.isOverdue()); // false ( one day late )
-        System.out.println("_______________");
+        System.out.println("________________");
+        System.out.println(todoItemDAO.findByPersonId(1));
+        // todoItemDAO.findByDeadlineBefore(item1); work
+        // System.out.println(personDAO.findAll());
+//System.out.println(todoItemDAO.findById(1));
+//System.out.println(todoItemDAO.findAllByDoneStatus(true));
+//System.out.println(todoItemDAO.findByTitleContains("test1"));
+//  System.out.println(todoItemDAO.findByDeadlineBefore(LocalDate.parse("2023-11-14")));
+        //   System.out.println(todoItemDAO.findByDeadLineAfter(LocalDate.parse("2022-11-14")));
 
 
     }//main
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
 
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }//class

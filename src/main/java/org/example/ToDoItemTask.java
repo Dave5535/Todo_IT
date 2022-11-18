@@ -1,7 +1,9 @@
 package org.example;
 
+import SequencersPack.TodoItemIdTaskIdSequencer;
+
 public class ToDoItemTask {
-    private static int sequencer = 0;
+
     //fields
     private int id;
     private boolean assigned;
@@ -10,7 +12,7 @@ public class ToDoItemTask {
 
     //constructor
     public ToDoItemTask() {
-        this.id = ++sequencer;
+        this.id = TodoItemIdTaskIdSequencer.nextId();
         this.assigned = true;
     }
     public ToDoItemTask(ToDoItem toDoIte, Person assignee) {

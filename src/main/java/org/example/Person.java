@@ -1,9 +1,12 @@
 package org.example;
 
 import Model.AppUser;
+import SequencersPack.PersonIdSequencer;
 
-public class Person {
-    private static int sequencer = 0;
+import java.util.Objects;
+
+public class Person implements Comparable<Person> {
+
     //fields
     private int id;
     private String firstName;
@@ -13,7 +16,7 @@ public class Person {
 
     //constructors
     public Person() {
-        this.id = (++sequencer);
+        this.id = PersonIdSequencer.nextId();
     }
 
     public Person(String firstName, String lastName, String email) {
@@ -34,12 +37,25 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(id,firstName,lastName,email);
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return id == person.id && Objects.equals(firstName, person.firstName)&& Objects.equals(lastName, person.lastName)&& Objects.equals(email,person.email);
+    }
+
+    @Override
+    public int compareTo(Person personInput) {
+        if (this.getId() > personInput.getId()){
+            return 1;
+        } else if(this.getId() < personInput.getId()){
+            return -1;
+        } else
+            return 0;
     }
 
 
@@ -93,6 +109,7 @@ public class Person {
         if (email == null) throw new IllegalArgumentException("Email can't be null.");
         this.email = email;
     }
+
 
 
 }//class

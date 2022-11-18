@@ -1,32 +1,56 @@
 package Model;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 public class AppUser {
     private String userName;
     private String password;
-    private AppRole role;
+    private Set<AppRole> roles;
 //constructor
 
-    public AppUser(String userName,String password,AppRole role){
+    public AppUser(String userName,String password){
         setUserName(userName);
         setPassword(password);
-        setRole(role);
+        addRole(AppRole.ROLE_APP_USER);
+    }
+    public AppUser(String username, String password, AppRole role) {
+        this.userName = username;
+        this.password = password;
+        addRole(role);
     }
   //methods
-
+  public void addRole(AppRole role) {
+      if (role == null) throw new IllegalArgumentException("Role was null");
+      if (roles == null) roles = new HashSet<>();
+      roles.add(AppRole.ROLE_APP_USER);
+  }
+    public void removeRole(AppRole role) {
+        if (role == null) throw new IllegalArgumentException("Role was null");
+        if (roles != null) roles.remove(role);
+    }
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(userName,roles);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AppUser appUser = (AppUser) o;
+        return Objects.equals(userName, appUser.userName) && Objects.equals(roles, appUser.roles);
     }
 
     @Override
     public String toString() {
-        return "User name : "+ getUserName();
+        return "AppUser{" +
+                "username='" + userName + '\'' +
+                ", roles=" + roles +
+                '}';
     }
+
 
 //setters & getters
     public String getUserName() {
@@ -47,12 +71,15 @@ public class AppUser {
         this.password = password;
     }
 
-    public AppRole getRole() {
-        return role;
+    public Set<AppRole> getRole() {
+        return roles;
     }
 
-    public void setRole(AppRole role) {
+    public void setRole(Set<AppRole> role) {
         if (password == null) throw new IllegalArgumentException("Role can't be null.");
-        this.role = role;
+        this.roles = role;
     }
+
+
+
 }

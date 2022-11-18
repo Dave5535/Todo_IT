@@ -1,10 +1,13 @@
 package org.example;
 
+import SequencersPack.TodoItemIdSequencer;
+
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Objects;
 
 public class ToDoItem {
-    private static int sequencer = 0;
+
     //fields
     private int id;
     private String title;
@@ -16,7 +19,7 @@ public class ToDoItem {
 
     //constructors
     public ToDoItem() {
-        this.id = ++sequencer;
+        this.id = TodoItemIdSequencer.nextId();
         this.done = true;
     }
     public ToDoItem(String title, String taskDescription,LocalDate deadline) {
@@ -88,11 +91,14 @@ setDeadline(deadline);
 
     @Override
     public boolean equals(Object obj) {
-        return done;
+        if (this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        ToDoItem toDoItem = (ToDoItem) obj;
+        return id == toDoItem.id && Objects.equals(taskDescription, toDoItem.taskDescription)&& Objects.equals(title, toDoItem.title);
     }
-
     @Override
     public String toString() {
-        return "Mission id : " + id + " Mission : " + taskDescription + " Located in : "+ title + " Performed : " + done;
+        return "Task id : " + id + " Task : " + taskDescription + " Task title : "+ title + " Performed : " + done;
     }
+
 }//class
