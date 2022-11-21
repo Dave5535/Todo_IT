@@ -1,6 +1,7 @@
 package InterFace;
 
 import Model.AppUser;
+import SequencersPack.PersonIdSequencer;
 import org.example.Person;
 
 import java.util.*;
@@ -13,6 +14,8 @@ public class AppUserDAOCollection implements AppUserDAO {
     }
     @Override
     public AppUser persist(AppUser appUser) {
+if (appUser == null) throw new IllegalArgumentException("appUser was null");
+     appUser.setId(PersonIdSequencer.nextId());
         users.add(appUser);
         return appUser;
     }

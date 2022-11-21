@@ -15,16 +15,20 @@ public class Person implements Comparable<Person> {
     private AppUser credentials;
 
     //constructors
-    public Person() {
-        this.id = PersonIdSequencer.nextId();
-    }
 
-    public Person(String firstName, String lastName, String email) {
-        this();
+
+    public Person(int id, String firstName, String lastName, String email, AppUser credentials) {
+        setId(id);
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        setCredentials(credentials);
+    }
 
+    public Person(String firstName, String lastName, String email) {
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
     }
 
 

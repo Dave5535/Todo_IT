@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class AppUser {
+    private Integer id;
     private String userName;
     private String password;
     private Set<AppRole> roles;
@@ -15,9 +16,11 @@ public class AppUser {
         setPassword(password);
         addRole(AppRole.ROLE_APP_USER);
     }
-    public AppUser(String username, String password, AppRole role) {
-        this.userName = username;
-        this.password = password;
+    public AppUser(Integer id,String username, String password, AppRole role) {
+
+       this.id = id;
+       setUserName(username);
+       setPassword(password);
         addRole(role);
     }
   //methods
@@ -75,9 +78,19 @@ public class AppUser {
         return roles;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public void setRole(Set<AppRole> role) {
         if (password == null) throw new IllegalArgumentException("Role can't be null.");
         this.roles = role;
+
+
     }
 
 

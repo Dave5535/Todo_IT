@@ -18,7 +18,7 @@ public class TodoItemTaskDAOCollectionTest {
     private ToDoItemTask itemAndPerson;
 
 @BeforeEach
-        public void beforeEach(){
+        public void setUp(){
     AppUserDAO appUserDAO = new AppUserDAOCollection();
     PersonDAO personDAO = new PersonDAOCollection();
     TodoItemDAO todoItemDAO = new TodoItemDAOCollection();
