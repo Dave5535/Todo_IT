@@ -13,8 +13,8 @@ public class App {
         TodoItemDAO todoItemDAO = new TodoItemDAOCollection();
         TodoitemTaskDAO todoitemTaskDAO = new TodoItemTaskDAOCollection();
 
-        AppUser user = new AppUser("Dave5535", "123");
-        AppUser test = new AppUser("test", "Admin");
+        AppUser user = new AppUser("Dave5535", "123456789");
+        AppUser test = new AppUser("test", "Admin6789");
 
         appUserDAO.persist(user);
         appUserDAO.persist(test);
@@ -43,7 +43,7 @@ public class App {
         System.out.println(todoitemTaskDAO.findById(1));
 
         System.out.println("________________");
-        System.out.println(todoItemDAO.findByPersonId(1));
+
         // todoItemDAO.findByDeadlineBefore(item1); work
         // System.out.println(personDAO.findAll());
 //System.out.println(todoItemDAO.findById(1));

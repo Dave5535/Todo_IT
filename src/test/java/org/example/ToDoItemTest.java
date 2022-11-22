@@ -1,15 +1,12 @@
 package org.example;
 
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 
 public class ToDoItemTest {
-
-    @Before
-
 
     @Test
     public void test_isOverdue_When_Task_IS_Overdue(){
@@ -27,7 +24,7 @@ public class ToDoItemTest {
         ToDoItem test = new ToDoItem("test", "Test",deadLine);
         boolean actual = test.isOverdue();
         boolean expected = true;
-        Assert.assertEquals(expected,actual);
+        assertEquals(expected,actual);
     }
 
 

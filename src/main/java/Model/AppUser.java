@@ -71,6 +71,7 @@ public class AppUser {
 
     public void setPassword(String password) {
         if (password == null) throw new IllegalArgumentException("Password can't be null.");
+        if (password.length() < 8  ) throw new IllegalArgumentException("Password must be at least 8 characters long");
         this.password = password;
     }
 

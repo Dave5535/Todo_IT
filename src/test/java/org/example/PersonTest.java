@@ -1,13 +1,10 @@
 package org.example;
 import org.junit.Assert;
-import org.junit.Before;
+
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
+
 
 public class PersonTest {
-
-    @BeforeAll
-
 
 
 @Test
