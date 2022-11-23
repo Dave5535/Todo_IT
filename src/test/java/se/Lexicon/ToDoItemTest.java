@@ -1,8 +1,9 @@
-package org.example;
+package se.Lexicon;
 
+import Model.ToDoItem;
 import org.junit.Assert;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
+
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 

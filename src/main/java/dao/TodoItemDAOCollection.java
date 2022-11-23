@@ -1,8 +1,6 @@
-package InterFace;
+package dao;
 
-import org.example.Person;
-import org.example.ToDoItem;
-import org.example.ToDoItemTask;
+import Model.ToDoItem;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,16 +9,22 @@ import java.util.List;
 
 public class TodoItemDAOCollection implements TodoItemDAO {
     private List<ToDoItem> items;
-
+public static TodoItemDAOCollection instance;
     public TodoItemDAOCollection() {
         items = new ArrayList<>();
     }
 
+    public static TodoItemDAOCollection getInstance(){
+        if(instance == null) instance = new TodoItemDAOCollection();
+        return instance;
+    }
     @Override
     public ToDoItem persist(ToDoItem todoItem) {
         items.add(todoItem);
         return todoItem;
     }
+
+
 
     @Override
     public ToDoItem findById(int id) {
@@ -78,5 +82,12 @@ LocalDate findDate  = timeLeft.getDeadline();
     @Override
     public void remove(int id) {
         items.removeIf(removeItem -> removeItem.getId() == id);
+    }
+
+
+
+    @Override
+    public Collection<ToDoItem> findAll() {
+        return items;
     }
 }

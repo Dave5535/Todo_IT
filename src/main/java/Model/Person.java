@@ -1,7 +1,4 @@
-package org.example;
-
-import Model.AppUser;
-import SequencersPack.PersonIdSequencer;
+package Model;
 
 import java.util.Objects;
 
@@ -14,6 +11,7 @@ public class Person implements Comparable<Person> {
     private String email;
     private AppUser credentials;
 
+    private AppUser appUser;
     //constructors
 
 
@@ -24,11 +22,15 @@ public class Person implements Comparable<Person> {
         setEmail(email);
         setCredentials(credentials);
     }
+    public Person(){
 
-    public Person(String firstName, String lastName, String email) {
+    }
+
+    public Person(String firstName, String lastName, String email,AppUser appUser) {
         setFirstName(firstName);
         setLastName(lastName);
         setEmail(email);
+        setAppUser(appUser);
     }
 
 
@@ -114,6 +116,11 @@ public class Person implements Comparable<Person> {
         this.email = email;
     }
 
+    public AppUser getAppUser() {
+        return appUser;
+    }
 
-
+    public void setAppUser(AppUser appUser) {
+        this.appUser = appUser;
+    }
 }//class

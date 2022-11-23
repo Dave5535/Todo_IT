@@ -1,16 +1,22 @@
-package InterFace;
+package dao;
 
 import Model.AppUser;
 import SequencersPack.PersonIdSequencer;
-import org.example.Person;
 
 import java.util.*;
 
 public class AppUserDAOCollection implements AppUserDAO {
     private List<AppUser> users;
 
+private static AppUserDAOCollection instance;
     public AppUserDAOCollection() {
         users = new ArrayList<>();
+
+    }
+
+    public static AppUserDAOCollection getInstance(){
+        if (instance == null) instance = new AppUserDAOCollection();
+        return instance;
     }
     @Override
     public AppUser persist(AppUser appUser) {

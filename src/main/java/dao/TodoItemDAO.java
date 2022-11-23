@@ -1,12 +1,12 @@
-package InterFace;
+package dao;
 
-import org.example.ToDoItem;
+import Model.ToDoItem;
 
 import java.time.LocalDate;
 import java.util.Collection;
 
-public interface TodoItemDAO {
-    ToDoItem persist(ToDoItem todoItem);
+public interface TodoItemDAO extends BaseDao<ToDoItem> {
+
     ToDoItem findById(int Id);
     Collection<ToDoItem> findAllByDoneStatus(Boolean done);
     Collection<ToDoItem> findByTitleContains(String title);

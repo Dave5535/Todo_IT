@@ -1,4 +1,4 @@
-package org.example;
+package Model;
 
 import SequencersPack.TodoItemIdSequencer;
 
@@ -98,7 +98,7 @@ setDeadline(deadline);
     }
     @Override
     public String toString() {
-        return "Task id : " + id + " Task : " + taskDescription + " Task title : "+ title + " Performed : " + done;
+        return "Task id : " + id + " Task : " + taskDescription + " Task title : "+ title + " is free : " + done;
     }
 
 }//class

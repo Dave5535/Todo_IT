@@ -1,5 +1,7 @@
-package org.example;
+package Model;
 
+import Model.Person;
+import Model.ToDoItem;
 import SequencersPack.TodoItemIdTaskIdSequencer;
 
 public class ToDoItemTask {

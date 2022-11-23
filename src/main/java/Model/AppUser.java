@@ -1,5 +1,7 @@
 package Model;
 
+import dao.AppUserDAOCollection;
+
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -9,12 +11,20 @@ public class AppUser {
     private String userName;
     private String password;
     private Set<AppRole> roles;
+
+
 //constructor
 
     public AppUser(String userName,String password){
         setUserName(userName);
         setPassword(password);
         addRole(AppRole.ROLE_APP_USER);
+    }
+
+    public AppUser(String username, String password, AppRole role) {
+        setUserName(username);
+        setPassword(password);
+        addRole(role);
     }
     public AppUser(Integer id,String username, String password, AppRole role) {
 
@@ -23,7 +33,9 @@ public class AppUser {
        setPassword(password);
         addRole(role);
     }
-  //methods
+
+
+    //methods
   public void addRole(AppRole role) {
       if (role == null) throw new IllegalArgumentException("Role was null");
       if (roles == null) roles = new HashSet<>();

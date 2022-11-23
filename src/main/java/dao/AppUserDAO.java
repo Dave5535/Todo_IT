@@ -1,14 +1,14 @@
-package InterFace;
+package dao;
 
 import Model.AppUser;
 
 import java.util.Collection;
 
-public interface AppUserDAO {
+public interface AppUserDAO extends BaseDao<AppUser> {
 
 
-    AppUser persist(AppUser appUser);
+
      AppUser findByUsername(String username);
-     Collection<AppUser> findAll();
+
      void remove(String username);
 }

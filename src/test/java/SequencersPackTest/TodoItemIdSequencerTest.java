@@ -1,7 +1,6 @@
 package SequencersPackTest;
 
-import org.example.Person;
-import org.example.ToDoItem;
+import Model.ToDoItem;
 import org.junit.Assert;
 import org.junit.Test;
 

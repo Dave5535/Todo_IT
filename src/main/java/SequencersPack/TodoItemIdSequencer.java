@@ -4,7 +4,7 @@ public class TodoItemIdSequencer {
     private static int currentId;
 
     public  static int nextId(){
-setCurrentId(currentId+++1);
+setCurrentId(++currentId);
         return currentId;
     }
 

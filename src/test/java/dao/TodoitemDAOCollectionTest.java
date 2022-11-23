@@ -1,8 +1,8 @@
-package InterFaceTest;
+package dao;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.example.ToDoItem;
+import Model.ToDoItem;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.function.Executable;

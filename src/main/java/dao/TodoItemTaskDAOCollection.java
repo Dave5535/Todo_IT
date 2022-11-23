@@ -1,7 +1,7 @@
-package InterFace;
+package dao;
 
-import org.example.Person;
-import org.example.ToDoItemTask;
+import Model.Person;
+import Model.ToDoItemTask;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,11 +9,16 @@ import java.util.List;
 
 public class TodoItemTaskDAOCollection implements TodoitemTaskDAO{
 private List<ToDoItemTask> taskList;
-
+public static TodoItemDAOCollection instance;
 
     public TodoItemTaskDAOCollection(){
         taskList = new ArrayList<>();
     }
+  public static TodoItemDAOCollection getInstance(){
+        if (instance == null) instance = new TodoItemDAOCollection();
+      return instance;
+  }
+
     @Override
     public ToDoItemTask persist(ToDoItemTask todoItemTask) {
        taskList.add(todoItemTask);
