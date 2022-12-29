@@ -1,8 +1,11 @@
 package dao;
 
+import Exeption.DBConnectionException;
 import Model.AppUser;
+import MySqlConnection.MySqlConnection;
 import SequencersPack.PersonIdSequencer;
 
+import java.sql.*;
 import java.util.*;
 
 public class AppUserDAOCollection implements AppUserDAO {
@@ -25,6 +28,31 @@ if (appUser == null) throw new IllegalArgumentException("appUser was null");
         users.add(appUser);
         return appUser;
     }
+
+
+    @Override
+    public AppUser findById(int id) {
+        String query = "select * from appuser where id = ?";
+        try(Connection connection = MySqlConnection.getConnection();
+PreparedStatement preparedStatement = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+        ) {
+preparedStatement.setInt(1,id);
+            try (ResultSet result = preparedStatement.getGeneratedKeys();) {
+                if (result.next()) {
+                    System.out.println("item Id: " + result.getInt(1));
+                    AppUser appUser = new AppUser(result.getString("user_name"),result.getString("_password"));
+                    return appUser;
+                }
+            }
+
+        }catch (DBConnectionException | SQLException e){
+            System.out.println(e.getMessage());
+        }
+
+
+        return null;
+    }
+
     @Override
     public AppUser findByUsername(String userInput) {
         if (userInput == null) throw new IllegalArgumentException("ssn was null");

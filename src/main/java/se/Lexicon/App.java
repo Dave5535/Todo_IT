@@ -1,20 +1,18 @@
 package se.Lexicon;
 
 
+import Exeption.DBConnectionException;
+import MySqlConnection.MySqlConnection;
 import controller.Controller;
-import dao.*;
-import Model.AppUser;
-import Model.Person;
-import Model.ToDoItem;
-import Model.ToDoItemTask;
+import dao.PersonDAOCollection;
 
-import java.time.LocalDate;
-
+import java.sql.*;
 
 public class App {
     public static void main(String[] args) {
         Controller controller = new Controller();
-        controller.doMainMenu();
-    }//main
+         controller.doMainMenu();
 
+
+    }//main
 }//class

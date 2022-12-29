@@ -1,21 +1,24 @@
 package Model;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Person implements Comparable<Person> {
 
     //fields
-    private int id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private AppUser credentials;
-
     private AppUser appUser;
+
+    private Integer appId;
+    private Date regDate;
     //constructors
 
 
-    public Person(int id, String firstName, String lastName, String email, AppUser credentials) {
+    public Person(Integer id, String firstName, String lastName, String email, AppUser credentials) {
         setId(id);
         setFirstName(firstName);
         setLastName(lastName);
@@ -32,18 +35,32 @@ public class Person implements Comparable<Person> {
         setEmail(email);
         setAppUser(appUser);
     }
-
+    public Person(Integer id,String firstName, String lastName, String email) {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+    }
+    public Person(Integer id,String firstName, String lastName, String email,Date regDate,Integer appId) {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setEmail(email);
+        setRegDate(regDate);
+        setAppId(appId);
+    }
 
 //methods
 
     @Override
     public String toString() {
-        return "id: " + id + ", Name: " + firstName + " " + lastName + ", email: " + email;
+        return "id: " + id + ", Name: " + firstName + " " + lastName + ", email: " + email +
+              " regdate: " + regDate + " appid: " + appId  ;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id,firstName,lastName,email);
+        return Objects.hash(id,firstName,lastName,email,regDate,appId);
     }
 
     @Override
@@ -51,17 +68,13 @@ public class Person implements Comparable<Person> {
         if (this == obj) return true;
         if(obj == null || getClass() != obj.getClass()) return false;
         Person person = (Person) obj;
-        return id == person.id && Objects.equals(firstName, person.firstName)&& Objects.equals(lastName, person.lastName)&& Objects.equals(email,person.email);
+        return Objects.equals(id, person.id) && Objects.equals(firstName, person.firstName)&& Objects.equals(lastName, person.lastName)
+                && Objects.equals(email,person.email)&& Objects.equals(regDate,person.regDate)&& Objects.equals(appId,person.appId);
     }
 
     @Override
     public int compareTo(Person personInput) {
-        if (this.getId() > personInput.getId()){
-            return 1;
-        } else if(this.getId() < personInput.getId()){
-            return -1;
-        } else
-            return 0;
+        return this.getId().compareTo(personInput.getId());
     }
 
 
@@ -78,11 +91,11 @@ public class Person implements Comparable<Person> {
     }
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -122,5 +135,21 @@ public class Person implements Comparable<Person> {
 
     public void setAppUser(AppUser appUser) {
         this.appUser = appUser;
+    }
+
+    public Integer getAppId() {
+        return appId;
+    }
+
+    public void setAppId(Integer appId) {
+        this.appId = appId;
+    }
+
+    public Date getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(Date setRegDate) {
+        regDate = setRegDate;
     }
 }//class

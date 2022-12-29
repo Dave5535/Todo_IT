@@ -11,4 +11,5 @@ public interface TodoitemTaskDAO extends BaseDao<ToDoItemTask>{
 
     Collection<ToDoItemTask> findByPersonId(Person personId);
     void remove(int id);
+
 }
